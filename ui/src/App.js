@@ -11,7 +11,11 @@ import Leaves from './components/Leaves';
 import Messages from './components/Messages';
 import Task from './components/Task';
 import axios from 'axios';
+import ReactPlayer from 'react-player'
+
 function App() {
+    const [url, setUrl] = useState()
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -30,6 +34,24 @@ function App() {
       </Routes>
       
       </BrowserRouter>
+          <input placeholder='url' onChange={(e:any)=>{setUrl(e.target.value)}}></input>
+      <iframe src={url}></iframe>
+      <ReactPlayer
+        url={url}
+        
+  config={{
+    youtube: {
+      playerVars: {
+
+        preload: "auto",
+
+        autoplay: true,
+
+    }
+    },
+    
+  }}
+/>
     </div>
   );
 }
